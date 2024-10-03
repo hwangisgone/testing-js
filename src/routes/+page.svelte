@@ -72,7 +72,8 @@
 					xored: "XXX",
 				}
 			} else if (i > j) {
-				xoredArrays[i][j] = xoredArrays[j][i];
+				xoredArrays[i][j] = structuredClone(xoredArrays[j][i]);
+				xoredArrays[i][j].len = alltexts[i].len;
 			} else {
 				xoredArrays[i].push({
 					note: `${alltexts[i].name}x${alltexts[j].name}`.padStart(4, " "),
@@ -126,7 +127,7 @@
 	});
 
 	// Start replacing
-	console.log(xoredArrays);
+	// console.log(xoredArrays);
 	const steps = [];
 	for (let i = 0; i < alltexts.length; i++) {
 		steps[i] = [];
